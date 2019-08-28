@@ -10,6 +10,11 @@ conn = pymysql.connect(
             db=dbname)
 cursor = conn.cursor()
 data = cursor.execute("SELECT * FROM "+table_name)
-print(data)
+print(cursor.fetchone())
+
+# cursor.execute("Insert Into "+table_name + "(content) values (%s)", "content~")
+# new_id = cursor.lastrowid
+
+conn.commit()
 cursor.close()
 conn.close()
